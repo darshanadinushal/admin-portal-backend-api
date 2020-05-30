@@ -15,7 +15,7 @@ spec:
     spec:
       containers: 
       - name: adminportalbackend
-        image: adminportaldockercontainerregistry.azurecr.io/adminportal/webapi
+        image: adminportaldockercontainerregistry.azurecr.io/adminportal/webapi:latest
         ports:
         - containerPort: 8080 
 
