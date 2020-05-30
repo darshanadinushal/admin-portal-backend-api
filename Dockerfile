@@ -3,7 +3,7 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-nanoserver-1903 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-nanoserver-1903 AS build
 WORKDIR /src
