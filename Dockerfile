@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["app.adminportal.api.csproj", ""]
-RUN dotnet restore "adminportal.api.csproj"
+RUN dotnet restore "./app.adminportal.api.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "app.adminportal.api.csproj" -c Release -o /app
