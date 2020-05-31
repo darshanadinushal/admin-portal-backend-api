@@ -13,7 +13,8 @@ RUN dotnet build "app.adminportal.api.csproj" -c Release -o /app
 FROM build AS publish
 RUN dotnet publish "app.adminportal.api.csproj" -c Release -o /app
 
-FROM base AS final
-WORKDIR /app
+
+FROM nginx:alpine AS final
+WORKDIR /usr/share/nginx/html
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "app.adminportal.api.dll"]
+COPY nginx.conf /etc/nginx/nginx.conf
