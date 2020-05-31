@@ -15,6 +15,7 @@ RUN dotnet publish "app.adminportal.api.csproj" -c Release -o /app
 
 
 FROM nginx:alpine AS final
+RUN rm -rf /usr/share/nginx/html/*
 WORKDIR /usr/share/nginx/html
 COPY --from=publish /app .
 COPY nginx.conf /etc/nginx/nginx.conf
