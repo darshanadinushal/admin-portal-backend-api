@@ -4,12 +4,12 @@ COPY ["app.adminportal.api.csproj", ""]
 RUN dotnet restore "./adminportal.api.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "app.adminportal.api.csproj" -c Release -o /app
+RUN dotnet build "app.adminportal.api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "app.adminportal.api.csproj" -c Release -o /app
+RUN dotnet publish "app.adminportal.api.csproj" -c Release -o /app/publish
 
 FROM nginx:alpine AS final
 WORKDIR /usr/share/nginx/html
-COPY --from=publish /app/publish/app.adminportal.api/dist .
+COPY --from=publish /app/app.adminportal.api/dist .
 COPY nginx.conf /etc/nginx/nginx.conf
