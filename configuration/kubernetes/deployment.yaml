@@ -17,7 +17,7 @@ spec:
       - name: adminportalbackend
         image: adminportaldockercontainerregistry.azurecr.io/adminportal/webapi:latest
         ports:
-        - containerPort: 54569 
+        - containerPort: 80
 
 ---
 apiVersion: v1
@@ -28,5 +28,5 @@ spec:
   selector: 
     app: adminportalbackend
   ports:
-    - port: 54569
+    - port: 80
   type: LoadBalancer
